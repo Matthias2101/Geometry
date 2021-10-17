@@ -25,7 +25,7 @@ set trange [0:2*pi]
 
 set samples 500
 
-n = 20
+n = 3
 
 x0 = cos(0)
 y0 = sin(0)
