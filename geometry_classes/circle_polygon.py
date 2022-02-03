@@ -1,5 +1,5 @@
 #Circle with inner and outer polygon
-#October 17, 2021
+#November 02, 2021
 #Matthias Müller
 from manim import *
 import math
@@ -8,11 +8,12 @@ import math
 class CirclePoly():
     
     def __init__(self, rad_circle = 3, no_corners = 6, koord_center = [0,0,0]):
-        print("in Circle_Poly __init__")
+        #print("in Circle_Poly __init__")
         self.rad_circle = rad_circle
         self.no_corners = no_corners
         self.koord_center = koord_center
         self.circle=Circle(radius = rad_circle)   #create a circle
+        self.circle.move_to(koord_center)
         self.inner_lines = []
         self.outer_lines = []
         self.radial_lines = []
@@ -22,9 +23,10 @@ class CirclePoly():
         
         for count in range(0, no_corners+1):
             angle= 2*count*math.pi /no_corners
-            print("count", count, "angle", angle)
-            corner_circle = Dot([rad_circle*math.cos(angle),rad_circle*math.sin(angle),0])
-            corner_out = Dot([out_radius*math.cos(angle),out_radius*math.sin(angle),0])
+            #print("count", count, "angle", angle)
+            corner_circle = Dot([rad_circle*math.cos(angle)+koord_center[0], rad_circle*math.sin(angle)+koord_center[1], 0 + koord_center[2] ])
+            corner_out = Dot([out_radius*math.cos(angle) + koord_center[0] ,out_radius*math.sin(angle) + koord_center[1] ,0 + koord_center[2] ] )
+
             #self.add(corner_out)
             # corners_circle.add(corner_circle)
             # corners_out.add(corner_out)
